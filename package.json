@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "bin": {
-    "datapackage-json": "index.js"
+    "datapackage-json": "bin.js"
   },
   "dependencies": {
     "init-package-json": "~0.0.11"
