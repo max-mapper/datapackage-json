@@ -27,9 +27,11 @@ datapackage-json default
 
 both arguments are optional. `promptFile` must be a PromZard prompt script, `dir` is the folder where the magic should happen, default is `cwd`.
 
-#### pkg.init()
+#### pkg.init([cb])
 
-prompts CLI user using promzard for package.json fields, and then writes the result out to `package.json`
+prompts CLI user using promzard for package.json fields, and then writes the result out to `package.json`  
+
+calls optional `cb` with `(err, data)` where `data` the package object that was just written to the fs
 
 #### pkg.default(callback)
 

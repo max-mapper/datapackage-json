@@ -13,10 +13,9 @@ function DPJ(dir, file) {
   this.dir = dir || process.cwd()
 }
 
-DPJ.prototype.init = function() {
-  init(this.dir, this.file, function (er, data) {
-    if (er) console.error('\n' + er.message)
-  })  
+DPJ.prototype.init = function(cb) {
+  if (!cb) cb = function(er) { if (er) console.error('\n' + er.message) }
+  init(this.dir, this.file, cb)  
 }
 
 DPJ.prototype.write = function(obj, saveTarget, cb) {
