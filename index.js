@@ -7,13 +7,13 @@ var init = require('init-package-json')
 
 module.exports = DPJ
 
-function DPJ(file, dir) {
-  if (!(this instanceof DPJ)) return new DPJ(file, dir)
+function DPJ(dir, file) {
+  if (!(this instanceof DPJ)) return new DPJ(dir, file)
   this.file = file || path.join(__dirname, 'prompt.js')
   this.dir = dir || process.cwd()
 }
 
-DPJ.prototype.prompt = function() {
+DPJ.prototype.init = function() {
   init(this.dir, this.file, function (er, data) {
     if (er) console.error('\n' + er.message)
   })  
@@ -31,7 +31,7 @@ DPJ.prototype.write = function(obj, saveTarget, cb) {
     saveTarget = defaultPath
   
   obj = JSON.stringify(obj, null, 2) + "\n"
-  fs.writeFile(saveTarget, data, function (er) {
+  fs.writeFile(saveTarget, obj, function (er) {
     if (cb) cb(er)
   })  
 }
