@@ -1,7 +1,6 @@
 {
   "name": "datapackage-json",
   "version": "0.0.0",
-  "description": "",
   "main": "index.js",
   "bin": {
     "datapackage-json": "bin.js"
@@ -10,8 +9,15 @@
     "init-package-json": "~0.0.11"
   },
   "devDependencies": {},
-  "scripts": {
-  },
+  "scripts": {},
   "author": "",
-  "license": "BSD-2-Clause"
+  "license": "BSD",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/maxogden/datapackage-json.git"
+  },
+  "bugs": {
+    "url": "https://github.com/maxogden/datapackage-json/issues"
+  },
+  "homepage": "https://github.com/maxogden/datapackage-json"
 }
