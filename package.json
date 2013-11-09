@@ -1,12 +1,13 @@
 {
   "name": "datapackage-json",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "main": "index.js",
   "bin": {
     "datapackage-json": "bin.js"
   },
   "dependencies": {
-    "init-package-json": "~0.0.11"
+    "init-package-json": "~0.0.11",
+    "read-package-json": "~1.1.4"
   },
   "devDependencies": {
     "tape": "~2.1.0"

@@ -4,6 +4,7 @@ var util = require('util')
 var path = require('path')
 var Module = require('module').Module
 var init = require('init-package-json')
+var readJson = require('read-package-json')
 
 module.exports = DPJ
 
@@ -11,6 +12,11 @@ function DPJ(dir, file) {
   if (!(this instanceof DPJ)) return new DPJ(dir, file)
   this.file = file || path.join(__dirname, 'prompt.js')
   this.dir = dir || process.cwd()
+}
+
+DPJ.prototype.read = function(cb) {
+  var pkg = path.resolve(this.dir, 'package.json')
+  readJson(pkg, cb)
 }
 
 DPJ.prototype.init = function(cb) {
