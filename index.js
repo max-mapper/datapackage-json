@@ -19,7 +19,7 @@ DPJ.prototype.read = function(cb) {
   fs.readFile(pkg, function(err, buff) {
     if (err) return cb(err)
     var json
-    try { json = JSON.stringify(buff) }
+    try { json = JSON.parse(buff) }
     catch(e) { return cb(e) }
     if (json) cb(null, json)
   })
