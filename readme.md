@@ -31,9 +31,11 @@ both arguments are optional. `promptFile` must be a PromZard prompt script, `dir
 
 reads `package.json` in `pkg.dir`, calls `cb` with `(err, json)`
 
-#### pkg.init([cb])
+#### pkg.init([opts, cb])
 
-prompts CLI user using promzard for package.json fields, and then writes the result out to `package.json`  
+prompts CLI user using promzard for package.json fields, and then writes the result out to `package.json`
+
+if `opts.defaults` is true it will bypass the promzard prompt and just write a default package.json
 
 calls optional `cb` with `(err, data)` where `data` the package object that was just written to the fs
 

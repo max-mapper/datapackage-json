@@ -10,8 +10,8 @@ test('.default', function(t) {
   var pkg = datapackage()
   pkg.default(function(err, defaults) {
     t.false(err, 'no error')
-    var expected = ['name','version','description','repository','keywords','author','license'].sort()
-    t.equals(JSON.stringify(expected), JSON.stringify(Object.keys(defaults).sort()), 'keys match')
+    t.true(defaults.name, 'has name')
+    t.true(defaults.version, 'has version')
     t.end()
   })
 })
@@ -23,6 +23,19 @@ test('.write', function(t) {
     var pj = fs.readFileSync(packageFile)
     pj = JSON.parse(pj)
     t.equal(JSON.stringify(obj), JSON.stringify(pj))
+    fs.unlinkSync(packageFile)
+    t.end()
+  })
+})
+
+test('.init with defaults', function(t) {
+  var pkg = datapackage(__dirname)
+  pkg.init({defaults: true}, function(err) {
+    t.false(err, 'no error')
+    var pj = fs.readFileSync(packageFile)
+    pj = JSON.parse(pj)
+    t.true(pj.name, 'has name')
+    t.true(pj.version, 'has version')
     fs.unlinkSync(packageFile)
     t.end()
   })

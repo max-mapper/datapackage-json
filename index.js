@@ -16,12 +16,32 @@ function DPJ(dir, file) {
 
 DPJ.prototype.read = function(cb) {
   var pkg = path.resolve(this.dir, 'package.json')
-  readJson(pkg, cb)
+  fs.readFile(pkg, function(err, buff) {
+    if (err) return cb(err)
+    var json
+    try { json = JSON.stringify(buff) }
+    catch(e) { return cb(e) }
+    if (json) cb(null, json)
+  })
 }
 
-DPJ.prototype.init = function(cb) {
+DPJ.prototype.init = function(options, cb) {
+  var self = this
+  if (typeof options === 'function') {
+    cb = options
+    options = {}
+  }
   if (!cb) cb = function(er) { if (er) console.error('\n' + er.message) }
-  init(this.dir, this.file, cb)  
+  if (options.defaults) {
+    this.default(function(err, defaults) {
+      if (err) return cb(err)
+      self.write(defaults, function(err) {
+        cb(err, defaults)
+      })
+    })
+  } else {
+    init(this.dir, this.file, cb)  
+  }
 }
 
 DPJ.prototype.write = function(obj, saveTarget, cb) {
