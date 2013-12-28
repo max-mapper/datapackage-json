@@ -60,5 +60,5 @@ module.exports = {
         "url" : config['init.author.url']
       }
     : undefined,
-  "license" : prompt('license', 'BSD')
+  "license" : prompt('license', 'PDDL-1.0')
 }
