@@ -23,7 +23,7 @@ datapackage-json default
 
 ### api
 
-### var pkg = datapackage([promptFile, dir])
+### var pkg = datapackage([dir, promptFile])
 
 both arguments are optional. `promptFile` must be a PromZard prompt script, `dir` is the folder where the magic should happen, default is `cwd`.
 
